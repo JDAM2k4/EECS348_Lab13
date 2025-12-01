@@ -1,0 +1,20 @@
+1. Is there a fault in the program? If so, locate it and explain.
+Yes, there is a fault in the program as the variable absent_count is never declared or initialized, causing an error unless it exists globally. The loop also incorrectly starts at index 1, skipping the first attendance value.
+
+2. Define a test case that does not execute the fault. Start from this question, if it is possible, you should give the test case (the attendence record with 10 values), the expected output and the actual output. If impossible, explain the reason. Besides, you should impliment the complete program, including the functions under test, and verify your inputs along with their corresponding outputs.
+This is impossible. With 10 attendance values, the loop always executes, so the faulty line is always run. Therefore, no valid 10-value test can avoid executing the fault.
+
+3. Define a test case that executes the fault but does not result in an error state.
+Test case: 1 0 0 0 1 1 1 1 1 1.
+Even though the faulty code skips the first value, there are still three absences in the remaining entries, so the student correctly fails.
+Expected = FAIL, Actual = FAIL.
+
+4. Define a test case that results in an error state but not a failure.
+Test case: 0 0 0 0 1 1 1 1 1 1.
+The correct absence count is 4, but the faulty code counts only 3 because it ignores index 0 — however, both counts still lead to failing.
+Expected = FAIL, Actual = FAIL.
+
+5. Define a test case that results in failure.
+Test case: 0 0 0 1 1 1 1 1 1 1.
+The correct algorithm counts three absences and the student should fail, but the faulty algorithm ignores the first absence and counts only two.
+Expected = FAIL, Actual = PASS.
